@@ -29,7 +29,7 @@
     }
 
     #cardSecundario {
-      width: 25%;
+      width: 22%;
     }
 
     #texto {
@@ -98,6 +98,14 @@
       border-radius: 50%;
       display: inline-block;
       cursor: pointer;
+      box-shadow: 1px 1px 5px #999;
+
+    }
+
+    .dot:hover {
+      -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      transform: scale(1.2);
     }
 
     .cards {
@@ -107,6 +115,7 @@
       border-radius: 50%;
       cursor: pointer;
       border: 12px solid blue;
+      box-shadow: 1px 1px 5px #999;
       display: flex;
     }
 
@@ -148,8 +157,7 @@
     #botao {
       background-color: #1f3756;
       border-color: #ffffff;
-
-      margin-left: 90%;
+      width: 100px;
     }
 
     #imagecard1,
@@ -188,11 +196,13 @@
         <p>YOU PICKED</p>
         <p id="card1" class="cards"> <img src="./images/icon-paper.svg" alt="" id="imagecard1"></p>
       </div>
-      <div>
-        <p id="final">
+      <div style="margin-top: 30px;">
+        <p id="final" style="font-size: 28px;">
           Your Lose
         </p>
-        <button type="button" class="btn btn-light" onclick="retornar()"> Play Again</button>
+        <button style="width: 130px;height: 40px; color: #d14c79; font-weight: 600;" type="button" class="btn btn-light"
+          onclick="retornar()">PLAY
+          AGAIN</button>
       </div>
       <div>
         <p>THE HOUSE PICKED</p>
@@ -202,8 +212,11 @@
 
     </div>
   </div>
-  <button type="button" class="btn btn-primary" id="botao" data-toggle="modal"
-    data-target="#exampleModal">Rules</button>
+  <div style=" position: absolute;
+  right: 15px;
+  bottom: 12px;">
+    <button type="button" class="btn btn-primary" id="botao" data-toggle="modal"
+      data-target="#exampleModal">RULES</button></div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
