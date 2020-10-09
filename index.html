@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/peace-sign.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100&display=swap" rel="stylesheet">
+
+  <title>Jokempô </title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body {
+      background-color: hsl(214, 47%, 23%);
+    }
+
+    #card {
+      background-color: hsl(214, 47%, 23%);
+      border-color: hsl(217, 16%, 45%);
+      width: 60%;
+      margin: auto;
+      margin-top: 3%;
+      height: 170px;
+    }
+
+    #cardSecundario {
+      width: 25%;
+    }
+
+    #texto {
+      font-weight: 600;
+      font-family: sans-serif;
+      font-size: 40px;
+      color: hsl(217, 16%, 45%);
+    }
+
+    #score {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      color: hsl(229, 64%, 46%);
+    }
+
+    p {
+      font-weight: 600;
+      font-family: sans-serif;
+      font-size: 17px;
+      color: #FAFAFA;
+      text-align: center;
+    }
+
+    #core {
+      font-weight: 600;
+      font-family: sans-serif;
+      font-size: 40px;
+      color: hsl(217, 16%, 45%);
+    }
+
+    #cardInterior {
+      display: block;
+      margin: auto;
+    }
+
+    #game {
+      width: 307px;
+      background-image: url(images/bg-triangle.svg);
+      height: 277px;
+      margin: auto;
+      margin-top: 70px;
+      position: relative;
+
+    }
+
+
+
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+
+    .dot {
+      height: 135px;
+      width: 135px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .cards {
+      height: 200px;
+      width: 200px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 12px solid blue;
+      display: flex;
+    }
+
+    #a {
+      position: absolute;
+      left: -36px;
+      top: -36px;
+      border: 12px solid blue;
+
+    }
+
+    #b {
+      position: absolute;
+      right: -36px;
+      top: -36px;
+      border: 12px solid yellow;
+
+    }
+
+    #c {
+      position: absolute;
+      bottom: -16px;
+      left: 28%;
+      border: 12px solid red;
+
+    }
+
+    img {
+      margin-top: 22px;
+      margin-left: 25px;
+    }
+
+    #play {
+      margin-top: 70px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    #botao {
+      background-color: #1f3756;
+      border-color: #ffffff;
+
+      margin-left: 90%;
+    }
+
+    #imagecard1,
+    #imagecard2 {
+      margin-top: 16px;
+      margin-left: 47px;
+      width: 70px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="card" id="card">
+    <div class="card-body">
+      <img src="./images/logo.svg" alt="">
+      <div class="card" id="cardSecundario">
+        <div class="card-body" id="cardInterior">
+          <p id="score">score</p>
+          <p id="core">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+
+    <div id="game">
+      <span id="a" class="dot" onclick="exibir('paper')"> <img src="./images/icon-paper.svg" alt=""></span>
+      <span id="b" class="dot" onclick="exibir('scissors')"><img src="./images/icon-scissors.svg" alt=""></span>
+      <span id="c" class="dot" onclick="exibir('rock')"><img src="./images/icon-rock.svg" alt=""></span>
+    </div>
+
+    <div id="play">
+      <div>
+        <p>YOU PICKED</p>
+        <p id="card1" class="cards"> <img src="./images/icon-paper.svg" alt="" id="imagecard1"></p>
+      </div>
+      <div>
+        <p id="final">
+          Your Lose
+        </p>
+        <button type="button" class="btn btn-light" onclick="retornar()"> Play Again</button>
+      </div>
+      <div>
+        <p>THE HOUSE PICKED</p>
+        <p id="card2" class="cards"> <img src="./images/icon-paper.svg" alt="" id="imagecard2"></p>
+      </div>
+
+
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" id="botao" data-toggle="modal"
+    data-target="#exampleModal">Rules</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Rules</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <img src="./images/image-rules.svg" alt="" style="  width: 387px; margin: auto;">
+
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+  function retornar() {
+    document.getElementById("play").style.display = "none";
+    document.getElementById("game").style.display = "block";
+  }
+
+  function calcular(res) {
+    var sco = document.getElementById("core");
+    var score = document.getElementById("core").innerHTML;
+    var core
+    if (res === "win") {
+      core = parseInt(score) + 1
+    } else {
+      core = score - 1
+
+    }
+
+    sco.innerText = core
+  }
+
+  function gamer(tipo1, tipo2) {
+    var final = document.getElementById("final");
+
+    if (tipo1 === "paper") {
+      if (tipo2 === "paper") {
+        final.innerHTML = "Draw"
+        return
+
+      } else if (tipo2 === "rock") {
+        final.innerHTML = "You Win"
+        calcular("win")
+        return
+      } else {
+        final.innerHTML = "You Lost"
+        calcular("lost")
+        return
+      }
+
+    }
+
+    if (tipo1 === "scissors") {
+      if (tipo2 === "paper") {
+        final.innerHTML = "You Win"
+        calcular("win")
+        return
+      } else if (tipo2 === "rock") {
+        final.innerHTML = "You Lost"
+        calcular("lost")
+        return
+      } else {
+        final.innerHTML = "Draw"
+        return
+      }
+    }
+
+    if (tipo1 === "rock") {
+      if (tipo2 === "paper") {
+        final.innerHTML = "You Lost"
+        calcular("lost")
+        return
+      } else if (tipo2 === "rock") {
+        final.innerHTML = "Draw"
+        return
+      } else {
+        final.innerHTML = "You Win"
+        calcular("win")
+        return
+      }
+    }
+  }
+
+  function exibir(tipo) {
+    document.getElementById("game").style.display = "none";
+    var card1 = document.getElementById("imagecard1");
+    var card = document.getElementById("card1");
+
+    card1.src = "./images/icon-" + tipo + ".svg"
+
+    switch (tipo) {
+      case 'paper':
+        card.style.border = "12px solid blue"
+        break;
+      case 'scissors':
+        card.style.border = "12px solid yellow"
+        break;
+      case 'rock':
+        card.style.border = "12px solid red"
+        break;
+      default:
+        console.log(`Sorry`);
+    }
+
+    var house = ["paper", "scissors", "rock"]
+
+    let position = Math.floor(Math.random() * 3);
+
+    console.log(position, house[position])
+
+    var card2 = document.getElementById("imagecard2");
+    var cards2 = document.getElementById("card2");
+
+
+    card2.src = "./images/icon-" + house[position] + ".svg"
+
+    switch (house[position]) {
+      case 'paper':
+        cards2.style.border = "12px solid blue"
+        break;
+      case 'scissors':
+        cards2.style.border = "12px solid yellow"
+        break;
+      case 'rock':
+        cards2.style.border = "12px solid red"
+        break;
+      default:
+        console.log(`Sorry`);
+    }
+
+    gamer(tipo, house[position])
+
+
+    document.getElementById("play").style.display = "flex";
+  }
+
+  function ocultar() {
+    document.getElementById("play").style.display = "none";
+  }
+  ocultar()
+</script>
+
+</html>
